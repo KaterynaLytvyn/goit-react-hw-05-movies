@@ -38,8 +38,8 @@ export default function MovieView() {
             {movie && <MovieDetails movie={movie} />}
             <h4>Additional information</h4>
             <ul>
-                <li><Link to={"/movies/:movieId/cast"}>Cast</Link></li>
-                <li><Link to={"/movies/:movieId/reviews"}>Reviews</Link></li>
+                <li><Link to={`/movies/${movieId}/cast`}>Cast</Link></li>
+                <li><Link to={`/movies/${movieId}/reviews`}>Reviews</Link></li>
             </ul>
             <Outlet />
         </div>

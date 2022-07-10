@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import MovieSearchForm from 'components/MovieSearchForm/MovieSearchForm'
 import { getMovieByKeyword } from '../services/moviesApi.js'
+import Loader from 'components/Loader'
 
 export default function MoviesView() {
 
@@ -36,6 +37,8 @@ export default function MoviesView() {
 
     return(
         <div>
+            {loading && <Loader />}
+            {error && <p>An error occured: {error.message}</p>}
             <MovieSearchForm onSubmit={handleFormSubmit}/>
             {movies && 
                 <ul>
