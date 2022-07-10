@@ -14,6 +14,11 @@ export default function MoviesView() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+
+        if(!filter) {
+            return
+        }
+
         async function fetchMovies() {
             setLoading(true);
             try {
