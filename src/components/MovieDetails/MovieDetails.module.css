@@ -1,0 +1,8 @@
+.container {
+    display: flex;
+    border-bottom: 3px solid #A2B5BB;
+}
+
+.imageWrapper {
+    margin: 10px 10px 10px 0;
+}
