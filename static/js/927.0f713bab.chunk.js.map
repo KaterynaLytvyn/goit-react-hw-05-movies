@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/927.0f713bab.chunk.js","mappings":"iMAAe,SAASA,IAEpB,OAAO","sources":["views/ReviewsView.jsx"],"sourcesContent":["export default function ReviewsView() {\n\n    return <h1>ReviewsView</h1>\n}"],"names":["ReviewsView"],"sourceRoot":""}
