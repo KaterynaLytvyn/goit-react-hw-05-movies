@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, Link, Outlet} from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation} from 'react-router-dom';
 import { getMovie } from '../services/moviesApi.js'
 import Loader from 'components/Loader'
 import MovieDetails from 'components/MovieDetails/MovieDetails'
@@ -7,6 +7,8 @@ import MovieDetails from 'components/MovieDetails/MovieDetails'
 export default function MovieView() {
 
     const { movieId } = useParams();
+    const location = useLocation();
+
 
     const [movie, setMovie] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -17,7 +19,6 @@ export default function MovieView() {
             setLoading(true);
             try {
                 const movie = await getMovie(movieId);
-                console.log('movie:', movie)
                 setMovie(movie)
             } catch (error) {
                 setError(error)
@@ -30,11 +31,14 @@ export default function MovieView() {
 
       }, [movieId]);
 
+    const path = location?.state?.from ?? '/';
+
 
     return(
         <div>
             {loading && <Loader />}
             {error && <p>An error occured: {error.message}</p>}
+            <Link to={path}><button>Go back</button></Link>
             {movie && <MovieDetails movie={movie} />}
             <h4>Additional information</h4>
             <ul>

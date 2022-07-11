@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useSearchParams} from 'react-router-dom';
 import MovieSearchForm from 'components/MovieSearchForm/MovieSearchForm'
 import { getMovieByKeyword } from '../services/moviesApi.js'
 import Loader from 'components/Loader'
@@ -7,6 +7,8 @@ import Loader from 'components/Loader'
 export default function MoviesView() {
 
     const location = useLocation();
+
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const [filter, setFilter] = useState('')
     const [movies, setMovies] = useState([])
@@ -23,7 +25,6 @@ export default function MoviesView() {
             setLoading(true);
             try {
                 const movies = await getMovieByKeyword(filter);
-                console.log('found movies:', movies)
                 setMovies(movies.results)
             } catch (error) {
                 setError(error)
@@ -38,6 +39,7 @@ export default function MoviesView() {
 
     const handleFormSubmit = (searchString) => {
         setFilter(searchString)
+        setSearchParams(`query=${searchString}`);
     }
 
     return(

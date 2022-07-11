@@ -14,7 +14,6 @@ export default function HomeView() {
             setLoading(true);
             try {
                 const movies = await getTrendingMovies();
-                console.log('movies:', movies)
                 setMovies(movies.results)
             } catch (error) {
                 setError(error)
@@ -24,8 +23,6 @@ export default function HomeView() {
         }
 
         fetchMovies();
-
-        console.log('useEffect called')
 
       }, []);
 
