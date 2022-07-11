@@ -8,6 +8,7 @@ export default function MoviesView() {
 
     const location = useLocation();
 
+    // eslint-disable-next-line
     const [searchParams, setSearchParams] = useSearchParams();
 
     const [filter, setFilter] = useState('')
