@@ -11,7 +11,7 @@ export const getMovie = async (movieId) => {
 }
 
 export const getMovieByKeyword = async (searchString) => {
-    const response = await axios.get(`https://api.themoviedb.org/3/search/movie/?api_key=92f9c720cb77c75804e80b01c8601d54&query=${searchString}`)
+    const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=92f9c720cb77c75804e80b01c8601d54&query=${searchString}`)
     return response.data
 }
 
