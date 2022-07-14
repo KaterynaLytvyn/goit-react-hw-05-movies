@@ -8,8 +8,8 @@ export default function MoviesView() {
 
     const location = useLocation();
 
-    // eslint-disable-next-line
     const [searchParams, setSearchParams] = useSearchParams();
+    const queryValue = searchParams.get('query');
 
     const [filter, setFilter] = useState('')
     const [movies, setMovies] = useState([])
@@ -19,6 +19,10 @@ export default function MoviesView() {
     useEffect(() => {
 
         if(!filter) {
+
+            if(queryValue){
+                setFilter(queryValue)
+            }
             return
         }
 
@@ -36,7 +40,7 @@ export default function MoviesView() {
 
         fetchMovies();
 
-      }, [filter]);
+      }, [filter, queryValue]);
 
     const handleFormSubmit = (searchString) => {
         setFilter(searchString)
